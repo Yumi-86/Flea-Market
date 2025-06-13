@@ -21,40 +21,23 @@ docker-compose exec php bash
 composer install
 ```
 
-#### 3. 日本語ファイルの導入
+#### 3. .env.example をコピーし.env ファイルを作成、環境変数の変更。
 
-このプロジェクトでは Laravel のバリデーションメッセージ等を日本語化するために [laravel-lang/lang](https://github.com/Laravel-Lang/lang) を使用しています。<br>
-
-セットアップ手順:
-
-```bash
-composer require laravel-lang/lang:~7.0 --dev
-cp -r ./vendor/laravel-lang/lang/src/ja ./resources/lang/
-```
-
-Laravel の設定ファイル config/app.php の以下の項目が ja になっていることを確認してください。
-
-```php
-'local' => 'ja',
-```
-
-#### 4. .env.example をコピーし.env ファイルを作成、環境変数の変更。
-
-#### 5. アプリケーションキーの設定
+#### 4. アプリケーションキーの設定
 
 ```bash
 php artisan key:generate
 
 ```
 
-#### 6. マイグレーション、シーディングの実行
+#### 5. マイグレーション、シーディングの実行
 
 ```bash
 php artisan migrate
 php artisan db:seed
 
 ```
-#### 7. シンボリックリンクの実行
+#### 6. シンボリックリンクの実行
 ```bash
 php artisan storage:link
 ```
