@@ -1,6 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +22,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/register', [RegisterController::class, 'show'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/', [ItemController::class, 'index']);
+Route::get('/item/{item_id}', [ItemController::class, 'show']);
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::middleware('verified')->group(function () {
+
+        Route::get('/profile/edit', [ProfileController::class, 'edit']);
+        Route::post('/items', [ItemController::class, 'store']);
+        Route::post('/purchase/{id}', [PurchaseController::class, 'store']);
+        
+    });
 });

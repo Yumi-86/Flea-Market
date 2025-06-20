@@ -1,5 +1,6 @@
 # アプリケーション名
-### coachtechフリマ
+
+### coachtech フリマ
 
 ## 環境構築
 
@@ -40,6 +41,19 @@ Laravel の設定ファイル config/app.php の以下の項目が ja になっ�
 
 #### 4. .env.example をコピーし.env ファイルを作成、環境変数の変更。
 
+\*メールの設定について以下を参考にしてください
+
+```.env
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="test@example.com"
+MAIL_FROM_NAME="CoachtechFleamarket"
+```
+
 #### 5. アプリケーションキーの設定
 
 ```bash
@@ -54,7 +68,9 @@ php artisan migrate
 php artisan db:seed
 
 ```
+
 #### 7. シンボリックリンクの実行
+
 ```bash
 php artisan storage:link
 ```
@@ -73,6 +89,7 @@ chmod -R 777 storage
 データベース：MySQL 8.0<br>
 Web サーバー：Nginx 1.21.1<br>
 管理ツール：phpMyAdmin<br>
+仮想メールツール : mailhog<br>
 実行環境：Docker（docker-compose v3.8）<br>
 
 ## ER 図
@@ -82,6 +99,7 @@ Web サーバー：Nginx 1.21.1<br>
 ## URL
 
 - phpMyAdmin : http://localhost:8080/
+- mailhog Web_UI : http://localhost:8025/
 - 商品一覧画面（トップページ）: http://localhost/
 - 会員登録画面 : http://localhost/register
 - ログイン画面 : http://localhost/login

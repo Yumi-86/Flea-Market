@@ -1,0 +1,25 @@
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-form-group);
+}
+.form__header {
+    font-size: var(--font-input-label);
+    color: var(--color-black);
+}
+.form__input {
+    width: 100%;
+    padding: var(--spacing-input);
+    border: 1px solid var(--color-dark);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-md);
+}
+
+.form__input:focus {
+    outline: none;
+}
+
+.form__error {
+    color: var(--color-danger);
+    font-size: var(--font-content-dtl);
+}
