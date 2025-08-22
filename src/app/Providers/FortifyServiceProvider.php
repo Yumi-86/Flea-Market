@@ -48,9 +48,11 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.verify-email');
         });
 
-        Event::listen(Verified::class, function ($event) {
+        Event::listen(Verified::class, function ($event) 
+        {
             $user = $event->user;
-            if (!$user->profile) {
+
+            if (!$user->is_profile_set) {
                 session(['post_verified_redirect_to' => route('profile.create')]);
             }
         });

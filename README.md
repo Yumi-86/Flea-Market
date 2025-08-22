@@ -141,7 +141,7 @@ password : coachtech<br>
 
 このアプリでは決済機能にStripeを使用しています。<br>
 
-\*テスト環境での使用について
+#### テスト環境での使用について
 
 Stripeの開発用アカウントが必要です（https://dashboard.stripe.com/register
  にて無料で作成可能）。<br>
@@ -174,7 +174,7 @@ STRIPE_SECRET=あなたのStripeシークレットキー
 Web サーバー：Nginx 1.21.1<br>
 管理ツール：phpMyAdmin<br>
 仮想メールツール : mailhog<br>
-決済サービス：Stripe（テストモード利用）
+決済サービス：Stripe（テストモード利用）<br>
 実行環境：Docker（docker-compose v3.8）<br>
 
 ## ER 図

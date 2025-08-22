@@ -32,7 +32,9 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::get('/register', [RegisterController::class, 'show'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 Route::middleware(['auth'])->group(function () {
-    Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware('throttle:6,1')->name('verification.send');
+    Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'])
+    ->middleware('throttle:6,1')
+    ->name('verification.send');
 });
 Route::middleware(['web', 'auth', CustomRedirectIfVerified::class])->group(function () {
     Route::get('/email/verify', function () {
