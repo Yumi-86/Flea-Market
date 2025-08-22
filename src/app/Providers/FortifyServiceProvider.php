@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Contracts\RegisterResponse;
+use Laravel\Fortify\Contracts\VerifyEmailViewResponse;
+use App\Actions\Fortify\LoginResponse;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Support\Facades\Event;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -17,15 +21,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->instance(
-            RegisterResponse::class,
-            new class implements RegisterResponse {
-            public function toResponse($request)
-            {
-                return redirect('/profile/edit');
-            }
-        });
-        // Fortifyを使わないなら削除
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
     }
 
     /**
@@ -34,19 +30,38 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Fortify::createUsersUsing(CreateNewUser::class);
+
         Fortify::registerView(function () {
             return view('auth.register');
         });
-        // 上記の二つ、Fortifyを使わず登録機能の実装を行うなら削除
-        
+
         Fortify::loginView(function () {
             return view('auth.login');
         });
 
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;
-            
             return Limit::perMinute(10)->by($email . $request->ip());
+        });
+
+        Fortify::verifyEmailView(function () {
+            return view('auth.verify-email');
+        });
+
+        Event::listen(Verified::class, function ($event) {
+            $user = $event->user;
+            if (!$user->profile) {
+                session(['post_verified_redirect_to' => route('profile.create')]);
+            }
+        });
+
+        $this->app->singleton(VerifyEmailViewResponse::class, function () {
+            return new class implements VerifyEmailViewResponse {
+                public function toResponse($request)
+                {
+                    return view('auth.verify-email');
+                }
+            };
         });
     }
 }
