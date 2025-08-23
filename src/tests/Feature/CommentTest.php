@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Profile;
+use App\Models\Product;
 
 class CommentTest extends TestCase
 {
@@ -13,10 +15,77 @@ class CommentTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    protected $user;
+    protected $product;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()
+            ->has(Profile::factory())
+            ->create();
+
+        $this->product = Product::factory([
+            'selling_status' => false,
+        ])->create();
+    }
+
+    public function test_logged_in_user_can_submit_comments()
+    {
+        $this->actingAs($this->user);
+        
+        $this->post(route('comment.store', $this->product), [
+                'content' => 'テストコメント'
+            ])
+            ->assertRedirect();
+
+        $this->assertDatabaseHas('comments', [
+            'product_id' => $this->product->id,
+            'user_id' => $this->user->id,
+            'content' => 'テストコメント'
+        ]);
+
+        $this->get(route('items.show', $this->product))->assertSeeText('1');
+    }
+
+    public function test_users_cannot_submit_comments_before_logging_in()
+    {
+        $this->get(route('items.show', $this->product))
+            ->assertStatus(200)
+            ->assertDontSeeText('コメントを送信する')
+            ->assertSeeText('0'); // assertSeeInOrder(['<span class="comment-count">0</span>'], false) などで正確に
+    }
+
+    public function test_validation_error_if_no_comment_is_entered()
+    {
+        $this->actingAs($this->user)
+            ->post(route('comment.store', $this->product), [
+                'content' => ''
+            ])
+            ->assertSessionHasErrors(['content' => 'コメント内容を入力してください']);
+
+        $this->get(route('items.show', $this->product))
+            ->assertSeeText('0');
+
+        $this->assertDatabaseCount('comments', 0);
+    }
+
+    public function test_validation_error_if_comment_is_longer_than_255_characters()
+    {
+        $longText = str_repeat('あ', 256);
+
+        $this->actingAs($this->user);
+            
+        $this->post(route('comment.store', $this->product), [
+            'content' => $longText,
+        ])
+            ->assertSessionHasErrors(['content' => 'コメントは255文字以内で入力してください']);
+
+        $this->assertDatabaseCount('comments', 0);
+
+        $this->get(route('items.show', $this->product))->assertSeeText('0');
     }
 }

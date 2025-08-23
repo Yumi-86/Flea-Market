@@ -11,3 +11,8 @@ RUN curl -sS https://getcomposer.org/installer | php \
   && composer self-update
 
 WORKDIR /var/www
+
+apt-get update
+apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
+docker-php-ext-configure gd --with-jpeg --with-freetype
+docker-php-ext-install gd

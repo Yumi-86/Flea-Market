@@ -47,7 +47,7 @@ class ItemIndexTest extends TestCase
 
         $response = $this->get(route('items.index'));
 
-        $response->assertSee('sold');
+        $response->assertSee('Sold');
         $response->assertSee($soldProduct->name);
     }
 

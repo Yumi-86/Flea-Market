@@ -3,8 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
+use App\Models\Like;
 
 class LikeController extends Controller
 {
-    //
+    public function store(Product $product)
+    {
+        $user = Auth::user();
+
+        if (!$user->likes()->where('product_id', $product->id)->exists()) {
+            Like::create([
+                'user_id' => $user->id,
+                'product_id' => $product->id,
+            ]);
+        }
+        return back();
+    }
 }
