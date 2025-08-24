@@ -1,21 +1,13 @@
+@import 'base/variables.css';
+@import 'components/buttons.css';
+@import 'components/forms.css';
+@import 'components/cards.css';
+
 body {
+    margin: 0;
     font-family: 'inter', sans-serif;
     font-size: var(--font-sm);
     line-height: var(--lh-base);
-}
-
-a {
-    color: var(--color-link);
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
 }
 
 .header {
@@ -44,3 +36,4 @@ img {
     height: 50px;
     width: 100%;
 }
+

@@ -1,23 +1,18 @@
 :root {
-    /* Base Colors */
     --color-white: #ffffff;
     --color-black: #000000;
 
-    /* Theme Colors */
     --color-primary: #FF5555;
     --color-danger: #dc3545;
 
-    /* UI Colors */
     --color-light: #D9D9D9;
     --color-dark: #5F5F5F;
     --color-link: #0073CC;
 
-    /* Component-Specific */
     --color-select-option-active: #5599EB;
     --color-select-bg: #636769;
 
     
-    /* Font base sizes */
     --font-xs: 0.75rem;
     --font-sm: 1rem; /*16px*/
     --font-md: 1.125rem; /*18px*/
@@ -26,7 +21,6 @@
     --font-2xl: 2.25rem; /*36px*/
     --font-3xl: 2.8125rem; /*45px*/
 
-    /* Role-based aliases font */
     --font-input-label: var(--font-md);
     --font-btn: var(--font-md);
     --font-card-label: var(--font-sm);
@@ -35,7 +29,6 @@
     --font-heading: var(--font-xl);
     --font-title: var(--font-xl);
 
-    /* spacing base sizes */
     --spacing-xxs: 0.25rem;/* 4px */
     --spacing-xs: 0.5rem;/* 8px */
     --spacing-sm: 0.75rem; /* 12px */
@@ -44,7 +37,6 @@
     --spacing-xl: 2rem;/* 32px */
     --spacing-2xl: 3rem;    /* 48px */
 
-    /* Role-based aliases spacing */
     --spacing-section: var(--spacing-2xl); /* セクション間 */
     --spacing-card: var(--spacing-xl); /* カード間やパディング */
     --spacing-input: var(--spacing-sm);/* インプットの内側余白 */
@@ -52,13 +44,11 @@
     --spacing-btn: var(--spacing-sm);/* ボタンの内側余白 */
     --spacing-inline: var(--spacing-xs);/* インライン要素の間 */
 
-    /* border-radius */
     --radius-sm: 3px;
     --radius-md: 6px;
     --radius-lg: 12px;
     --radius-pill: 9999px;
 
-    /* Line Height */
     --lh-tight: 1.2;
     --lh-base: 1.5;
     --lh-loose: 1.75;

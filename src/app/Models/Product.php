@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class product extends Model
+class Product extends Model
 {
     use HasFactory;
 
@@ -32,5 +32,12 @@ class product extends Model
     public function purchase()
     {
         return $this->hasOne(Purchase::class);
+    }
+
+    public function scopeSearchKeyword($query, $keyword)
+    {
+        return $query->when($keyword, function ($q) use ($keyword) {
+            $q->where('name', 'like', '%' . $keyword . '%');
+        });
     }
 }

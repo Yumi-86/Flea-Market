@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/email.css') }}">
+<link rel="stylesheet" href="{{ asset('css/pages/email.css') }}">
 @endsection
 
 @section('content')
@@ -11,10 +11,10 @@
         <p>メール認証を完了してください。</p>
     </div>
     <div class="verify__button">
-        <a href="{{ url('/profile/edit') }}" class="verify__button-submit btn">認証はこちらから</a>
+        <a href="http://localhost:8025" target="_blank" class="verify__button-submit btn">認証はこちらから</a>
     </div>
     <form method="POST" action="{{ route('verification.send') }}" class="verify__resend">
-    @csrf
+        @csrf
         <button type="submit" class="verify__resend-submit"> 認証メールを再送する</button>
     </form>
 </div>

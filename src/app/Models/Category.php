@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class profile extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-
-    ];
-
-    public function user()
+    public function products()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(Product::class, 'category_product')->withTimestamps();
     }
 }

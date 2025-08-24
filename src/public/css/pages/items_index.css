@@ -1,0 +1,39 @@
+@import '../base/variables.css';
+@import '../components/buttons.css';
+@import '../components/forms.css';
+@import '../components/cards.css';
+
+.product-page {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: var(--spacing-section) var(--spacing-md);
+}
+
+.tab-menu {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--color-dark);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    font-weight: bold;
+    font-size: var(--font-md);
+}
+
+.tab-menu__items {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    gap: 5rem;
+}
+
+.tab-menu__spacer {
+    flex: 1;
+}
+
+.tab-menu__item {
+    color: var(--color-dark);
+}
+
+.tab-menu__item.active {
+    color: var(--color-primary);
+}

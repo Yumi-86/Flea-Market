@@ -1,0 +1,138 @@
+@import '../base/variables.css';
+@import '../components/buttons.css';
+@import '../components/forms.css';
+@import '../components/cards.css';
+
+.mypage {
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.mypage-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin: var(--spacing-xl) 0;
+    width: 100%;
+}
+
+.mypage-header__user-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-3xl);
+    width: 50%;
+}
+
+.user-info__image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-light);
+}
+
+.user-info__name h2 {
+    font-size: var(--font-2xl);
+    color: var(--color-black);
+    font-weight: bold;
+}
+
+.mypage-header__link {
+    width: 50%;
+    display: flex;
+}
+
+.mypage-header__link-edit {
+    margin: 0 auto;
+    border: 2px solid var(--color-primary);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.mypage-header__link-edit:hover {
+    text-decoration: none;
+}
+
+.mypage__tabs {
+    display: flex;
+    justify-content: left;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-3xl);
+}
+
+.mypage__tabs a {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.mypage__tabs a:hover {
+    color: #222;
+}
+
+.mypage__tabs a.active {
+    color: red;
+    border-bottom: 2px solid red;
+}
+
+.product-grid__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-xl);
+    font-size: var(--font-md);
+    color: var(--color-dark);
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .mypage-header__user-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+        width: 100%;
+    }
+
+    .user-info__image img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .user-info__name h2 {
+        font-size: var(--font-xl);
+    }
+
+    .mypage-header__link {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .mypage__tabs {
+        padding-left: var(--spacing-lg);
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+
+    .item-dtl__page {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .item-dtl__image-wrapper {
+        width: 60%;
+    }
+
+    .item-dtl__info-wrapper {
+        width: 40%;
+    }
+}
