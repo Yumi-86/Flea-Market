@@ -2,3 +2,55 @@
 @import '../components/buttons.css';
 @import '../components/forms.css';
 @import '../components/cards.css';
+
+.purchase-form {
+    width: 100%;
+}
+
+.purchase-page {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1230px;
+    padding: 0 1rem;
+}
+
+.purchase-page__form-area {
+    flex: 2;
+}
+
+.purchase-page__summary {
+    flex: 1;
+    background-color: var(--color-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.purchase-page__btn--submit {
+    margin-top: var(--spacing-lg);
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-weight: bold;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.product-summary__image {
+    width: 100%;
+    max-width: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.form__payment,
+.form__shipping {
+    margin-top: var(--spacing-lg);
+}
