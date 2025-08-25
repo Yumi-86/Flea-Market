@@ -2,8 +2,6 @@
 @import '../components/buttons.css';
 @import '../components/forms.css';
 
-/* auth.css */
-
 .auth__content {
     max-width: 680px;
     margin: 0 auto;

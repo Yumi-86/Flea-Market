@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\Category;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -37,5 +39,37 @@ class ProductController extends Controller
         $comments = $product->comments()->with('user')->latest()->get();
 
         return view('items.show', compact('product', 'isLiked', 'comments'));
+    }
+    public function create() 
+    {
+        $categories = Category::all()->get();
+        return view('items.sell', compact('categories'));
+    }
+    public function store(ProductRequest $request)
+    {
+        $user = Auth::user();
+        $validated = $request->validated();
+
+        $path = null;
+        if ($request->hasFile('product_image')) {
+            $path = $request->file('product_image')->store('product_images', 'public');
+        }
+
+        $product = $user->products()->create([
+            'product_image' => $path,
+            'name' => $validated['name'],
+            'brand' => $validated['brand'],
+            'price' => $validated['price'],
+            'description' => $validated['description'],
+            'condition' => $validated['condition'],
+            'selling_status' => false,
+        ]);
+
+        // ✅ カテゴリ保存（スペル修正＋attach使用）
+        if (isset($validated['categories'])) {
+            $product->categories()->attach($validated['categories']);
+        }
+
+        return redirect()->route('mypage')->with('status', '商品を出品しました！');
     }
 }

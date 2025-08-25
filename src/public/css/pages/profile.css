@@ -2,3 +2,119 @@
 @import '../components/buttons.css';
 @import '../components/forms.css';
 @import '../components/cards.css';
+
+.profile-page {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: var(--spacing-card) 0;
+    text-align: center;
+}
+.alert-success {
+    background-color: var(--color-light);
+    color: var(--color-white);
+    font-size: var(--font-sm);
+}
+.profile-page__title {
+    font-size: var(--font-xl);
+    font-weight: bold;
+    margin-bottom: var(--spacing-lg);
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.profile-form__image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.profile-form__image-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--spacing-xs);
+    border: 2px solid var(--color-light);
+}
+
+.profile-form__image-label {
+    background-color: white;
+    color: var(--color-danger);
+    padding: var(--spacing-xxs) var(--spacing-sm);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--font-sm);
+}
+
+.profile-form__image-input {
+    display: none;
+}
+
+.form__group {
+    width: 100%;
+    text-align: left;
+}
+
+.form__group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: var(--spacing-xxs);
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .profile-page {
+        padding: var(--spacing-md) 0;
+    }
+
+    .profile-form__image-preview {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-form__image-label {
+        font-size: var(--font-xs);
+        padding: var(--spacing-xxs) var(--spacing-xs);
+    }
+
+    .profile-page__title {
+        font-size: var(--font-lg);
+    }
+
+    .form__group {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .profile-page {
+        max-width: 1400px;
+        padding: var(--spacing-xl) 0;
+    }
+
+    .profile-form__image-preview {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-form__image-label {
+        font-size: var(--font-sm);
+        padding: var(--spacing-xxs) var(--spacing-md);
+    }
+
+    .profile-page__title {
+        font-size: var(--font-2xl);
+    }
+
+    .form__group {
+        width: 70%;
+        margin: 0 auto;
+    }
+}

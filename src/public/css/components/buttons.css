@@ -1,8 +1,9 @@
 .btn {
     display: inline-block;
     padding: var(--spacing-btn) var(--spacing-btn);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     font-size: var(--font-btn);
+    font-weight: bold;
     cursor: pointer;
 }
 

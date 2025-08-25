@@ -1,0 +1,178 @@
+@import '../base/variables.css';
+@import '../components/buttons.css';
+@import '../components/forms.css';
+
+.sell-page {
+    width: 1230px;
+    margin: 0 auto;
+}
+
+.sell-page__inner {
+    padding: var(--spacing-section) var(--spacing-md);
+}
+
+.sell-page__title {
+    text-align: center;
+}
+
+.sell-page__title,
+.sell-form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.sell-form__group {
+    width: 100%;
+    padding-bottom: var(--spacing-3xl);
+}
+
+.sell-form__heading {
+    color: var(--color-dark);
+    padding-bottom: var(--spacing-xxs);
+    border-bottom: 1px solid var(--color-dark);
+}
+
+.sell-form__image-label {
+    border: 1px dashed var(--color-dark);
+    border-radius: var(--radius-md);
+    display: block;
+    height: 150px;
+    position: relative;
+}
+
+.sell-form__image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-primary);
+    font-weight: bold;
+    border: 2px solid var(--color-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+.sell-form__image-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+.sell-form__image-input {
+    display: none;
+}
+
+.sell-form__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.sell-form__category {
+    display: inline-block;
+    margin-bottom: var(--spacing-lg);
+}
+
+.sell-form__category-input:checked+.sell-form__category-label {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.sell-form__category-label {
+    display: inline-block;
+    padding: var(--spacing-xxs) var(--spacing-md);
+    border: 2px solid var(--color-primary);
+    border-radius: 20px;
+    color: var(--color-primary);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sell-form__label {
+    font-weight: bold;
+    margin-top: var(--spacing-md);
+    display: block;
+    font-size: var(--font-lg);
+}
+
+.sell-form__input,
+.sell-form__textarea,
+.sell-form__select {
+    width: 100%;
+    padding: var(--spacing-input);
+    margin-top: var(--spacing-xxs);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--color-dark);
+    border-radius: var(--radius-md);
+}
+
+.price-input-wrapper {
+    position: relative;
+}
+
+.price-input-wrapper::before {
+    content: '￥';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.price-input-wrapper input {
+    padding-left: 1.8em;
+}
+
+.sell-form__input--price::-webkit-inner-spin-button,
+.sell-form__input--price::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .sell-page {
+        width: 100%;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .sell-page__title,
+    .sell-form {
+        width: 90%;
+    }
+
+    .sell-form__items {
+        flex-direction: column;
+    }
+
+    .sell-form__input--price {
+        text-align: left;
+        padding-left: var(--spacing-xl);
+    }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .sell-page {
+        width: 90%;
+        max-width: 1300px;
+    }
+
+    .sell-form__image-label {
+        height: 180px;
+    }
+
+    .sell-form__category-label {
+        font-size: var(--font-xl);
+        padding: var(--spacing-sm) var(--spacing-lg);
+    }
+
+    .sell-form__input--price {
+        font-size: var(--font-lg);
+    }
+}
