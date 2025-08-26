@@ -1,0 +1,29 @@
+@import '../base/variables.css';
+@import '../components/buttons.css';
+@import '../components/forms.css';
+
+.page {
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.page__inner {
+    width: 50%;
+    margin: var(--spacing-xl) auto;
+}
+
+.page__heading {
+    margin: var(--spacing-2xl) auto;
+    text-align: center;
+}
+
+.page__form {
+    margin: var(--spacing-xl) auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.form__btn {
+    margin-top: var(--spacing-2xl);
+}

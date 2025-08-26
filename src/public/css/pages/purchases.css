@@ -33,24 +33,93 @@
 
 .purchase-page__btn--submit {
     margin-top: var(--spacing-lg);
-    width: 100%;
-    padding: var(--spacing-sm);
-    font-weight: bold;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
 }
 
 .product-summary__image {
-    width: 100%;
+    width: 30%;
     max-width: 300px;
     object-fit: cover;
     border-radius: var(--radius-sm);
 }
-
 .form__payment,
 .form__shipping {
     margin-top: var(--spacing-lg);
+}
+.product-summary__info .product-summary__name {
+    font-size: var(--font-lg);
+    font-weight: bold;
+}
+.product-summary__price {
+    font-size: var(--font-lg);
+    margin-top: var(--spacing-xs);
+}
+.form__shipping-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-black);
+}
+.form__shipping-edit {
+    color: var(--color-link);
+    font-size: var(--font-sm);
+    margin-top: var(--spacing-xs);
+    display: inline-block;
+}
+.form__payment-select {
+    width: 40%;
+    padding: var(--spacing-xs);
+    margin: var(--spacing-xs) var(--spacing-3xl) var(--spacing-xl);
+}
+
+.form__payment-select option {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: var(--spacing-xs);
+}
+.form__shipping-address {
+    margin: var(--spacing-xs) var(--spacing-3xl) var(--spacing-xl);
+}
+
+.form__payment-error,
+.form__shipping-error {
+    color: var(--color-danger);
+}
+
+.form__shipping {
+    border-bottom: 1px solid var(--color-black);
+}
+.purchase-page__summary table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--color-black);
+}
+
+.purchase-page__summary th,
+.purchase-page__summary td {
+    text-align: left;
+    padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+.purchase-page__summary tr {
+    border-bottom: 1px solid var(--color-black);
+}
+
+@media (max-width: 850px) and (min-width: 768px) {
+    .purchase-page {
+        flex-direction: column;
+        padding: var(--spacing-lg);
+    }
+    .purchase-page__form-area,
+    .purchase-page__summary {
+        width: 100%;
+    }
+    .form__payment-select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1540px) and (min-width: 1400px) {
+    .purchase-page {
+        max-width: 1540px;
+    }
 }

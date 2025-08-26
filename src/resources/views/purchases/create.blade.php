@@ -25,7 +25,7 @@
                 </div>
                 <select name="payment_method" class="form__payment-select" required>
                     <option value="" hidden {{ old('payment_method') ? '' : 'selected' }}>選択してください</option>
-                    <option value="コンビニ支払い" {{ old('payment_method') == 'コンビニ支払い' ? 'selected' : '' }}>コンビニ払い</option>
+                    <option value="コンビニ支払い" {{ old('payment_method') == 'コンビニ支払い' ? 'selected' : '' }}>コンビニ支払い</option>
                     <option value="カード支払い" {{ old('payment_method') == 'カード支払い' ? 'selected' : '' }}>カード支払い</option>
                 </select>
                 @error('payment_method')
@@ -46,6 +46,9 @@
                 <span class="form__shipping-error">{{ $message }}</span>
                 @enderror
                 @error('shipping_address')
+                <span class="form__shipping-error">{{ $message }}</span>
+                @enderror
+                @error('shipping_error')
                 <span class="form__shipping-error">{{ $message }}</span>
                 @enderror
             </div>

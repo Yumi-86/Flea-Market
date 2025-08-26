@@ -42,7 +42,7 @@ class ProductController extends Controller
     }
     public function create() 
     {
-        $categories = Category::all()->get();
+        $categories = Category::all();
         return view('items.sell', compact('categories'));
     }
     public function store(ProductRequest $request)
@@ -65,7 +65,6 @@ class ProductController extends Controller
             'selling_status' => false,
         ]);
 
-        // ✅ カテゴリ保存（スペル修正＋attach使用）
         if (isset($validated['categories'])) {
             $product->categories()->attach($validated['categories']);
         }

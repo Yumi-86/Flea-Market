@@ -9,6 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'product_image',
+        'name',
+        'brand',
+        'price',
+        'description',
+        'condition',
+        'selling_status',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -39,5 +50,9 @@ class Product extends Model
         return $query->when($keyword, function ($q) use ($keyword) {
             $q->where('name', 'like', '%' . $keyword . '%');
         });
+    }
+    public function getIsSoldAttribute()
+    {
+        return $this->selling_status; 
     }
 }

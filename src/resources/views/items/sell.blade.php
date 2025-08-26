@@ -1,5 +1,11 @@
-@extends('layouts.app') @section('css')
-<link rel="stylesheet" href="{{ asset('css/pages/items_sell.css') }}"> @endsection @section('content') <div class="sell-page page">
+@extends('layouts.app') 
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/pages/items_sell.css') }}"> 
+@endsection 
+
+@section('content') 
+<div class="sell-page page">
     <div class="sell-page__inner page__inner">
 
         <h1 class="sell-page__title">商品の出品</h1>
