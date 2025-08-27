@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form method="POST" action="{{ route('purchase.store', $product) }}" class="purchase-form">
+<form method="POST" action="{{ route('purchase.store', $product) }}" class="purchase-form" novalidate>
     @csrf
 
     <div class="purchase-page">
@@ -34,23 +34,26 @@
             </div>
 
             <div class="form__shipping">
+                @error('shipping_postal_code')
+                <div class="form__shipping-error">{{ $message }}</div>
+                @enderror
+                @error('shipping_address')
+                <div class="form__shipping-error">{{ $message }}</div>
+                @enderror
+                @error('shipping_error')
+                <div class="form__shipping-error">{{ $message }}</div>
+                @enderror
                 <div class="form__shipping-header">
                     <h3>配送先</h3>
                     <a href="{{ route('address.edit', $product) }}" class="form__shipping-edit">変更する</a>
                 </div>
                 <div class="form__shipping-address">
-                    <p>〒{{ optional($profile)->postal_code ?? '未登録' }}</p>
-                    <p>{{ optional($profile)->address ?? '住所未登録' }}{{ optional($profile)->building }}</p>
+                    <p>〒{{ session('shipping_postal_code', optional($profile)->postal_code) ?? '未登録' }}</p>
+                    <p>{{ session('shipping_address', optional($profile)->address) ?? '住所未登録' }}{{ session('shipping_building', optional($profile)->building) }}</p>
                 </div>
-                @error('shipping_postal_code')
-                <span class="form__shipping-error">{{ $message }}</span>
-                @enderror
-                @error('shipping_address')
-                <span class="form__shipping-error">{{ $message }}</span>
-                @enderror
-                @error('shipping_error')
-                <span class="form__shipping-error">{{ $message }}</span>
-                @enderror
+                <input type="hidden" name="shipping_postal_code" value="{{ session('shipping_postal_code', optional($profile)->postal_code) }}">
+                <input type="hidden" name="shipping_address" value="{{ session('shipping_address', optional($profile)->address) }}">
+                <input type="hidden" name="shipping_building" value="{{ session('shipping_building', optional($profile)->building) }}">
             </div>
         </div>
 

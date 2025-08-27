@@ -7,7 +7,7 @@
 @section('content')
 <div class="item-dtl__page">
     <div class="item-dtl__image-wrapper">
-        <img src="{{ $product->product_image ?? asset('images/placeholder.jpg') }}" alt="商品画像" class="item-dtl__image">
+        <img src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('images/placeholder.jpg') }}" alt="商品画像" class="item-dtl__image">
         @if($product->is_sold)
         <div class="product-card__sold">Sold</div>
         @endif
@@ -62,7 +62,7 @@
             @foreach($comments as $comment)
             <div class="comment__group">
                 <div class="comment__user-info">
-                    <img src="{{ $comment->user->profile_image ?? asset('images/default-user.png') }}" alt="プロフィール画像" class="comment__user-image">
+                    <img src="{{ $comment->user->profile->profile_image ? asset('storage/' . $comment->user->profile->profile_image) : asset('images/default-user.png') }}" alt="プロフィール画像" class="comment__user-image">
                     <p class="comment__user-name">{{ $comment->user->name }}</p>
                 </div>
                 <div class="comment__body">

@@ -1,0 +1,7 @@
+.thank-you-page {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl) 0;
+    text-align: center;
+}
+

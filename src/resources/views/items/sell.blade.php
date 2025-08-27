@@ -81,7 +81,6 @@
 
                 <label class="sell-form__label">販売価格</label>
                 <div class="sell-form__input-wrapper">
-                    <span class="sell-form__prefix">￥</span>
                     <input type="number" name="price" id="price" placeholder="0" min="1" class="sell-form__input sell-form__input--price form__input">
                     @error('price')
                     <div class="sell-form__error form__error">{{ $message }}</div>

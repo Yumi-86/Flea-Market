@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/pages/profile.css') }}"> 
+<link rel="stylesheet" href="{{ asset('css/pages/address.css') }}"> 
 @endsection 
 
 @section('content') 
@@ -11,7 +11,7 @@
         <form action="{{ route('address.update', $product) }}" method="post" class="address-page__form page__form"> @csrf 
             <div class="form__group">
                 <div class="form__header">郵便番号</div> 
-                <input type="text" class="form__input" name="shipping_postal_code" value="{{ old('shipping_postal_code', $shippingData['shipping_postal_code'] ?? '') }}"> 
+                <input type="text" class="form__input" name="shipping_postal_code" value="{{ old('shipping_postal_code', session('shipping_postal_code', $user->profile->postal_code) ?? '') }}"> 
                 @error('shipping_postal_code') 
                 <span class="form__error">{{ $message }}</span> 
                 @enderror
@@ -19,7 +19,7 @@
 
             <div class="form__group">
                 <div class="form__header">住所</div> 
-                <input type="text" class="form__input" name="shipping_address" value="{{ old('shipping_address', $shippingData['shipping_address'] ?? '') }}"> 
+                <input type="text" class="form__input" name="shipping_address" value="{{ old('shipping_address', session('shipping_address', $user->profile->address) ?? '') }}"> 
                 @error('shipping_address') 
                 <span class="form__error">{{ $message }}</span> 
                 @enderror
@@ -27,7 +27,7 @@
 
             <div class="form__group">
                 <div class="form__header">建物名</div> 
-                <input type="text" class="form__input" name="shipping_building" value="{{ old('shipping_building', $shippingData['shipping_building'] ?? '') }}"> 
+                <input type="text" class="form__input" name="shipping_building" value="{{ old('shipping_building', session('shipping_building', $user->profile->building) ?? '') }}"> 
                 @error('shipping_building') 
                 <span class="form__error">{{ $message }}</span> 
                 @enderror

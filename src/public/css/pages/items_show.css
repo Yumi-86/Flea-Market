@@ -8,6 +8,7 @@
     max-width: 1230px;
     margin: var(--spacing-xl) auto;
     padding: 0 var(--spacing-md);
+    gap: var(--spacing-card);
 }
 
 .item-dtl__image-wrapper {

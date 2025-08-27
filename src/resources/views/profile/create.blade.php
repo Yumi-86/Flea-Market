@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+<link rel="stylesheet" href="{{ asset('css/pages/profile.css') }}">
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
 
         <h2 class="profile-page__heading page__heading">プロフィール設定</h2>
 
-        <form action="{{ route('profile.store') }}" class="profile-page__form page__form" novalidate enctype="multipart/form-data">
+        <form action="{{ route('profile.store') }}" method="post" class="profile-page__form page__form" novalidate enctype="multipart/form-data">
             @csrf
 
             <div class="profile-form__image-section">
@@ -50,11 +50,10 @@
                 <div class="profile-form__error form__error">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="profile-form__btn btn btn--primary">登録する</div>
+            <button type="submit" class="profile-form__btn btn btn--primary">登録する</button>
         </form>
     </div>
 </div>
-@section('js')
 <script>
     document.getElementById('profile_image').addEventListener('change', function() {
         const file = this.files[0];
@@ -64,5 +63,4 @@
         }
     });
 </script>
-@endsection
 @endsection

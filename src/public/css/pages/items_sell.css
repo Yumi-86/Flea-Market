@@ -111,23 +111,24 @@
     border-radius: var(--radius-md);
 }
 
-.price-input-wrapper {
+.sell-form__input-wrapper {
     position: relative;
 }
 
-.price-input-wrapper::before {
+.sell-form__input-wrapper::before {
     content: '￥';
     position: absolute;
     left: 10px;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     color: #333;
     font-size: 16px;
     pointer-events: none;
 }
 
-.price-input-wrapper input {
+.sell-form__input-wrapper input {
     padding-left: 1.8em;
+    text-align: right;
 }
 
 .sell-form__input--price::-webkit-inner-spin-button,
@@ -147,12 +148,8 @@
         width: 90%;
     }
 
-    .sell-form__items {
-        flex-direction: column;
-    }
-
     .sell-form__input--price {
-        text-align: left;
+        text-align: right;
         padding-left: var(--spacing-xl);
     }
 }

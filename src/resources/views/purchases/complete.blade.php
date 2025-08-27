@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/pages/purchase_complete.css') }}">
+@endsection
+
 @section('content')
 <div class="thank-you-page">
     <h2>ご購入ありがとうございました！</h2>

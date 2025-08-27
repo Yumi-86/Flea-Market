@@ -28,10 +28,15 @@
 }
 
 .profile-form__image-section {
+    width: 70%;
     display: flex;
-    flex-direction: column;
+    gap: var(--spacing-card);
     align-items: center;
     margin-bottom: var(--spacing-md);
+}
+
+.profile-form__image-section img {
+    background-color: var(--color-light);
 }
 
 .profile-form__image-preview {
@@ -58,7 +63,7 @@
 }
 
 .form__group {
-    width: 100%;
+    width: 70%;
     text-align: left;
 }
 
@@ -66,6 +71,11 @@
     display: block;
     font-weight: bold;
     margin-bottom: var(--spacing-xxs);
+}
+
+.profile-form__btn {
+    width: 70%;
+    margin-top: var(--spacing-2xl);
 }
 
 @media screen and (min-width: 768px) and (max-width: 850px) {

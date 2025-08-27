@@ -14,7 +14,7 @@
         @endif
         <h2 class="profile-page__heading page__heading">プロフィール設定</h2>
 
-        <form action="{{ route('profile.update') }}" class="profile-page__form page__form" novalidate enctype="multipart/form-data">
+        <form action="{{ route('profile.update') }}" method="post" class="profile-page__form page__form" novalidate enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
@@ -59,7 +59,7 @@
                 <div class="profile-form__error form__error">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="profile-form__btn btn btn--primary">登録する</div>
+            <button type="submit" class="profile-form__btn btn btn--primary">登録する</button>
         </form>
     </div>
 </div>

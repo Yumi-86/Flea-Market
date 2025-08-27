@@ -13,7 +13,7 @@ class ShippingAddressRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class ShippingAddressRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'shipping_postal_code' => ['required', 'string', 'regex:/^\d{3}-\d{4}$/'],
+            'shipping_address' => ['required', 'string'],
+            'shipping_building' => ['nullable', 'string'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'shipping_postal_code.required' => '郵便番号は必須です。',
+            'shipping_postal_code.regex' => '郵便番号は「123-4567」の形式で入力してください。',
+            'shipping_address.required' => '住所は必須です。',
         ];
     }
 }
