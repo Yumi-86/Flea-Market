@@ -31,7 +31,7 @@
             <a href="{{ route('items.show', $product->id) }}">
                 <div class="product-card">
                     <div class="product-card__image-wrapper"> 
-                        <img src="{{ $product->product_image ?? asset('images/placeholder.png') }}" alt="商品画像" class="product-card__image"> 
+                        <img src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('images/placeholder.png') }}" alt="商品画像" class="product-card__image"> 
                         @if($product->is_sold) 
                         <div class="product-card__sold">Sold</div> 
                         @endif 
@@ -51,7 +51,7 @@
             <a href="{{ route('items.show', $purchase->product->id) }}">
                 <div class="product-card">
                     <div class="product-card__image-wrapper"> 
-                        <img src="{{ $purchase->product->product_image ?? asset('images/placeholder.png') }}" alt="商品画像" class="product-card__image"> 
+                        <img src="{{ $purchase->product->product_image ? asset('storage/' . $purchase->product->product_image) : asset('images/placeholder.png') }}" alt="商品画像" class="product-card__image"> 
                     </div>
                     <p class="product-card__name">{{ $purchase->product->name }}</p>
                 </div>

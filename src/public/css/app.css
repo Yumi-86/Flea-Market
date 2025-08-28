@@ -17,6 +17,9 @@ body {
     top: 0;
     z-index: 1000;
 }
+a:-webkit-any-link {
+    text-decoration: none;
+}
 
 .header-inner {
     max-width: 1230px;

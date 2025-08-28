@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+<link rel="stylesheet" href="{{ asset('css/pages/profile.css') }}">
 @endsection
 
 @section('content')
+@if (session('status'))
+<div class="alert alert-success">
+    {{ session('status') }}
+</div>
+@endif
 <div class="profile-page page">
     <div class="profile-page__inner page-inner">
-        @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-        @endif
         <h2 class="profile-page__heading page__heading">プロフィール設定</h2>
 
         <form action="{{ route('profile.update') }}" method="post" class="profile-page__form page__form" novalidate enctype="multipart/form-data">
@@ -59,11 +59,10 @@
                 <div class="profile-form__error form__error">{{ $message }}</div>
                 @enderror
             </div>
-            <button type="submit" class="profile-form__btn btn btn--primary">登録する</button>
+            <button type="submit" class="profile-form__btn btn btn--primary">更新する</button>
         </form>
     </div>
 </div>
-@section('js')
 <script>
     document.getElementById('profile_image').addEventListener('change', function() {
         const file = this.files[0];
@@ -73,5 +72,4 @@
         }
     });
 </script>
-@endsection
 @endsection

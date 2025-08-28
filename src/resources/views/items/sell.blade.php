@@ -1,10 +1,10 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/pages/items_sell.css') }}"> 
-@endsection 
+<link rel="stylesheet" href="{{ asset('css/pages/items_sell.css') }}">
+@endsection
 
-@section('content') 
+@section('content')
 <div class="sell-page page">
     <div class="sell-page__inner page__inner">
 
@@ -33,7 +33,8 @@
                     <div class="sell-form__items">
                         @foreach ($categories as $category)
                         <label class="sell-form__category">
-                            <input type="checkbox" name="categories[]" value="{{ $category->id }}" class="sell-form__category-input" hidden>
+                            <input type="checkbox" name="categories[]" value="{{ $category->id }}" class="sell-form__category-input" hidden
+                                {{ (is_array(old('categories')) && in_array($category->id, old('categories'))) ? 'checked' : '' }}>
                             <span class="sell-form__category-label">{{ $category->name }}</span>
                         </label>
                         @endforeach
@@ -47,10 +48,10 @@
                     <label for="condition" class="sell-form__label">商品の状態</label>
                     <select name="condition" id="condition" class="sell-form__select">
                         <option value="" hidden>選択してください</option>
-                        <option value="良好">良好</option>
-                        <option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
-                        <option value="やや傷や汚れあり">やや傷や汚れあり</option>
-                        <option value="状態が悪い">状態が悪い</option>
+                        <option value="良好" {{ old('condition') == '良好' ? 'selected' : '' }}>良好</option>
+                        <option value="目立った傷や汚れなし" {{ old('condition') == '目立った傷や汚れなし' ? 'selected' : '' }}>目立った傷や汚れなし</option>
+                        <option value="やや傷や汚れあり" {{ old('condition') == 'やや傷や汚れあり' ? 'selected' : '' }}>やや傷や汚れあり</option>
+                        <option value="状態が悪い" {{ old('condition') == '状態が悪い' ? 'selected' : '' }}>状態が悪い</option>
                     </select>
                     @error('condition')
                     <div class="sell-form__error form__error">{{ $message }}</div>
@@ -62,26 +63,26 @@
                 <h2 class="sell-form__heading">商品名と説明</h2>
 
                 <label class="sell-form__label">商品名</label>
-                <input type="text" name="name" class="sell-form__input form__input">
+                <input type="text" value="{{ old('name') }}" name="name" class="sell-form__input form__input">
                 @error('name')
                 <div class="sell-form__error form__error">{{ $message }}</div>
                 @enderror
 
                 <label class="sell-form__label">ブランド名</label>
-                <input type="text" name="brand" class="sell-form__input form__input">
+                <input type="text" value="{{ old('brand') }}" name="brand" class="sell-form__input form__input">
                 @error('brand')
                 <div class="sell-form__error form__error">{{ $message }}</div>
                 @enderror
 
                 <label class="sell-form__label">商品の説明</label>
-                <textarea name="description" class="sell-form__textarea form__input" rows="4"></textarea>
+                <textarea name="description" class="sell-form__textarea form__input" rows="4">{{ old('description') }}</textarea>
                 @error('description')
                 <div class="sell-form__error form__error">{{ $message }}</div>
                 @enderror
 
                 <label class="sell-form__label">販売価格</label>
                 <div class="sell-form__input-wrapper">
-                    <input type="number" name="price" id="price" placeholder="0" min="1" class="sell-form__input sell-form__input--price form__input">
+                    <input type="number" name="price" id="price" placeholder="0" min="1" class="sell-form__input sell-form__input--price form__input" value="{{ old('price') }}">
                     @error('price')
                     <div class="sell-form__error form__error">{{ $message }}</div>
                     @enderror

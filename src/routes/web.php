@@ -70,5 +70,5 @@ Route::middleware('auth', 'verified', 'profile.complete')->group(function () {
 
     Route::get('/mypage', [ProfileController::class, 'show'])->name('mypage');
     Route::get('/mypage/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/mypage/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/mypage/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
