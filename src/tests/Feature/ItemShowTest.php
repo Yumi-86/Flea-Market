@@ -55,7 +55,7 @@ class ItemShowTest extends TestCase
 
         $response = $this->get(route('items.show', $product->id));
 
-        $response->assertSee($imagePath);
+        $response->assertSee('storage/' . $imagePath);
         $response->assertSeeText($product->name);
         $response->assertSeeText($product->brand);
         $response->assertSeeText(number_format($product->price));
