@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--spacing-3xl);
+    gap: var(--spacing-2xl);
     width: 50%;
 }
 
@@ -92,24 +92,29 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 850px) {
+    
     .mypage-header__user-info {
-        flex-direction: column;
         align-items: flex-start;
         gap: var(--spacing-md);
-        width: 100%;
+        width: 50%;
     }
 
-    .user-info__image img {
-        width: 100px;
-        height: 100px;
+    .user-info__image {
+        margin: 0 auto;
+    }
+    .user-info__image img{
+        width: 80px;
+        height: 80px;
+        
     }
 
-    .user-info__name h2 {
+    .user-info__name {
         font-size: var(--font-xl);
+        margin: 0 auto;
     }
 
     .mypage-header__link {
-        width: 100%;
+        width: 50%;
         justify-content: flex-end;
     }
 

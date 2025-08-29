@@ -48,7 +48,8 @@ class CommentTest extends TestCase
             'content' => 'テストコメント'
         ]);
 
-        $this->get(route('items.show', $this->product))->assertSeeText('1');
+        $this->get(route('items.show', $this->product))
+            ->assertSee(['<p class="commnents__nmb">1</p>'], false);
     }
 
     public function test_users_cannot_submit_comments_before_logging_in()
@@ -56,7 +57,7 @@ class CommentTest extends TestCase
         $this->get(route('items.show', $this->product))
             ->assertStatus(200)
             ->assertDontSeeText('コメントを送信する')
-            ->assertSeeText('0'); // assertSeeInOrder(['<span class="comment-count">0</span>'], false) などで正確に
+            ->assertSee(['<p class="commnents__nmb">0</p>'], false);
     }
 
     public function test_validation_error_if_no_comment_is_entered()
@@ -68,7 +69,7 @@ class CommentTest extends TestCase
             ->assertSessionHasErrors(['content' => 'コメント内容を入力してください']);
 
         $this->get(route('items.show', $this->product))
-            ->assertSeeText('0');
+            ->assertSee(['<p class="commnents__nmb">0</p>'], false);
 
         $this->assertDatabaseCount('comments', 0);
     }
@@ -86,6 +87,7 @@ class CommentTest extends TestCase
 
         $this->assertDatabaseCount('comments', 0);
 
-        $this->get(route('items.show', $this->product))->assertSeeText('0');
+        $this->get(route('items.show', $this->product))
+            ->assertSee(['<p class="commnents__nmb">0</p>'], false);
     }
 }

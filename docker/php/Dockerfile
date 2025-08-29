@@ -12,7 +12,11 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 WORKDIR /var/www
 
-apt-get update
-apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
-docker-php-ext-configure gd --with-jpeg --with-freetype
-docker-php-ext-install gd
+RUN apt-get update && apt-get install -y \
+libfreetype6-dev \
+libjpeg62-turbo-dev \
+libpng-dev \
+libwebp-dev \
+libxpm-dev \
+&& docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
+&& docker-php-ext-install -j$(nproc) gd

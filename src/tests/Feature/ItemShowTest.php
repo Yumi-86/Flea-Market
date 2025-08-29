@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\product;
-use App\Models\category;
+use App\Models\Product;
+use App\Models\Category;
 use App\Models\Like;
 use App\Models\Comment;
 

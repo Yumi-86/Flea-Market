@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use App\Models\product;
+use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Illuminate\Support\Str;
@@ -30,7 +30,7 @@ class ItemIndexTest extends TestCase
     {
         $products = Product::factory()->count(5)->create();
 
-        $response = $this->get(route('items.index'));
+        $response = $this->get(route('items.top'));
 
         foreach ($products as $product) {
             $response->assertSee($product->name);
@@ -45,7 +45,7 @@ class ItemIndexTest extends TestCase
             'selling_status' => true,
         ]);
 
-        $response = $this->get(route('items.index'));
+        $response = $this->get(route('items.top'));
 
         $response->assertSee('Sold');
         $response->assertSee($soldProduct->name);
@@ -64,7 +64,7 @@ class ItemIndexTest extends TestCase
             'name' => 'OTHER_PRODUCT_' . Str::random(10),
         ]);
 
-        $response = $this->get(route('items.index'));
+        $response = $this->get(route('items.top'));
 
         foreach($ownProducts as $ownProduct) {
             $response->assertDontSee($ownProduct->name);

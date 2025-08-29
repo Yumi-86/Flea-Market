@@ -31,7 +31,7 @@ class ItemSellTest extends TestCase
             ->create();
     }
 
-    public function user_can_create_a_product_with_valid_data()
+    public function test_user_can_create_a_product_with_valid_data()
     {
         Storage::fake('public');
         
@@ -49,14 +49,17 @@ class ItemSellTest extends TestCase
             'condition' => '良好',
         ];
 
-        $response = $this->post(route('products.store'), $formData);
+        $response = $this->post(route('items.store'), $formData);
 
         $response->assertStatus(302);
 
-        Storage::disk('public')->assertExists(Product::first()->product_image);
+        $product = Product::first();
+
+        Storage::disk('public')->assertExists($product->product_image);
+
 
         $this->assertDatabaseHas('products', [
-            'product_image' => 'product_images/test.png',
+            'product_image' => $product->product_image,
             'name' => 'テスト商品',
             'brand' => 'test brand',
             'description' => 'これはテスト用の商品説明です。',
