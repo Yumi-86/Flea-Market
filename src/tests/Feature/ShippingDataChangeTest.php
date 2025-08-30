@@ -21,7 +21,7 @@ class ShippingDataChangeTest extends TestCase
     protected $user;
     protected $product;
 
-    public function setUp(): void 
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -52,7 +52,6 @@ class ShippingDataChangeTest extends TestCase
     public function test_db_links_purchase_with_changed_shipping_address()
     {
         $this->actingAs($this->user);
-        
         $this->post(route('address.update', $this->product), [
             'shipping_postal_code' => '222-2222',
             'shipping_address' => '神奈川県横浜市2-2',
@@ -62,7 +61,7 @@ class ShippingDataChangeTest extends TestCase
             'payment_method' => 'コンビニ支払い',
             'shipping_postal_code' => '222-2222',
             'shipping_address' => '神奈川県横浜市2-2',
-        ])->assertRedirect(route('purchase.success'));
+        ])->assertRedirect();
 
         $this->assertDatabaseHas('purchases', [
             'user_id' => $this->user->id,

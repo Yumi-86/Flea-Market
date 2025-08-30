@@ -38,7 +38,7 @@
     margin-bottom: var(--spacing-md);
 }
 
-.profile__image-preview {
+.profile-form__image-preview {
     background-color: var(--color-light);
     width: 100px;
     height: 100px;
@@ -83,6 +83,11 @@
         padding: var(--spacing-md) 0;
     }
 
+    .profile-form__image-section {
+        width: 30%;
+        justify-content: space-between;
+    }
+
     .profile-form__image-preview {
         width: 80px;
         height: 80px;
@@ -100,6 +105,9 @@
     .form__group {
         width: 90%;
         margin: 0 auto;
+    }
+    .profile-form__btn {
+        width: 90%;
     }
 }
 

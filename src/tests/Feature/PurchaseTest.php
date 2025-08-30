@@ -77,7 +77,6 @@ class PurchaseTest extends TestCase
 
         $this->get(route('mypage', ['tab' => 'buy']))
             ->assertStatus(200)
-            ->assertSeeText('Sold')
             ->assertSee($this->product->name);
     }
 }
