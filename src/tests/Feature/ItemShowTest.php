@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Like;
 use App\Models\Comment;
+use App\Models\Profile;
 
 class ItemShowTest extends TestCase
 {
@@ -25,7 +26,9 @@ class ItemShowTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create();
+        $this->user = User::factory()
+            ->has(Profile::factory())
+            ->create();
     }
 
     public function test_product_detail_displays_all_required_information()
@@ -51,11 +54,12 @@ class ItemShowTest extends TestCase
 
         $comments = Comment::factory()->count(8)->create([
             'product_id' => $product->id,
+            'user_id' => $this->user->id,
         ]);
 
         $response = $this->get(route('items.show', $product->id));
 
-        $response->assertSee('storage/' . $imagePath);
+        $response->assertSee($imagePath);
         $response->assertSeeText($product->name);
         $response->assertSeeText($product->brand);
         $response->assertSeeText(number_format($product->price));

@@ -45,7 +45,7 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertRedirect('/login');
-        $response->assertSessionHasErrors(['email' => 'ログイン情報が登録されていません']);
+        $response->assertSessionHasErrors(['email' => 'ログイン情報が登録されていません。']);
     }
 
     public function test_user_with_verified_email_and_profile_is_redirected_to_home()

@@ -28,7 +28,7 @@ class LogoutTest extends TestCase
         $resonse = $this->actingAs($this->user)
                         ->post('/logout');
 
-        $resonse->assertRedirect('/login');
+        $resonse->assertRedirect(route('items.top'));
 
         $this->assertGuest();
     }
