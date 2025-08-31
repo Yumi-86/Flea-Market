@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CommentRequest extends FormRequest
 {
@@ -33,5 +35,15 @@ class CommentRequest extends FormRequest
             'content.required' => 'コメント内容を入力してください',
             'content.max' => 'コメントは255文字以内で入力してください',
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->withFragment('comment-form') // ★ これを追加
+        );
     }
 }

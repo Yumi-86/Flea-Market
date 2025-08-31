@@ -4,6 +4,7 @@
 
     --color-primary: #FF5555;
     --color-danger: #dc3545;
+    --color-danger-bg: #FFE4E1;
 
     --color-light: #D9D9D9;
     --color-dark: #5F5F5F;
@@ -12,7 +13,6 @@
     --color-select-option-active: #5599EB;
     --color-select-bg: #636769;
 
-    
     --font-xs: 0.75rem;
     --font-sm: 1rem; /*16px*/
     --font-md: 1.125rem; /*18px*/

@@ -11,7 +11,7 @@
 .mypage-header {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-card);
     margin: var(--spacing-xl) 0;
     width: 100%;
 }
@@ -92,25 +92,18 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 850px) {
-    
     .mypage-header__user-info {
-        align-items: flex-start;
-        gap: var(--spacing-md);
+        align-items: center;
+        gap: var(--spacing-card);
         width: 50%;
-    }
-
-    .user-info__image {
-        margin: 0 auto;
     }
     .user-info__image img{
         width: 80px;
         height: 80px;
-        
     }
 
     .user-info__name {
         font-size: var(--font-xl);
-        margin: 0 auto;
     }
 
     .mypage-header__link {

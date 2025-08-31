@@ -23,7 +23,7 @@
                     $profile->profile_image ? 
                         asset('storage/' . $profile->profile_image) : 
                         asset('images/default-user.png') 
-                    }}" alt="プロフィール画像" class="profile__image-preview" id="imagePreview">
+                    }}" alt="プロフィール画像" class="profile-form__image-preview" id="imagePreview">
                 <label for="profile_image" class="profile-form__image-label">画像を選択する</label>
                 <input type="file" name="profile_image" id="profile_image" class="profile-form__image-input" accept=".jpg,.jpeg,.png">
                 @error('profile_image')

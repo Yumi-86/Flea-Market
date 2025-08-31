@@ -22,24 +22,7 @@ docker-compose exec php bash
 composer install
 ```
 
-#### 3. 日本語ファイルの導入
-
-このプロジェクトでは Laravel のバリデーションメッセージ等を日本語化するために [laravel-lang/lang](https://github.com/Laravel-Lang/lang) を使用しています。<br>
-
-セットアップ手順:
-
-```bash
-composer require laravel-lang/lang:~7.0 --dev
-cp -r ./vendor/laravel-lang/lang/src/ja ./resources/lang/
-```
-
-Laravel の設定ファイル config/app.php の以下の項目が ja になっていることを確認してください。
-
-```php
-'local' => 'ja',
-```
-
-#### 4. .env.example をコピーし.env ファイルを作成、環境変数の変更。
+#### 3. .env.example をコピーし.env ファイルを作成、環境変数の変更。
 
 \*メールの設定について以下を参考にしてください
 
@@ -54,14 +37,14 @@ MAIL_FROM_ADDRESS="test@example.com"
 MAIL_FROM_NAME="CoachtechFleamarket"
 ```
 
-#### 5. アプリケーションキーの設定
+#### 4. アプリケーションキーの設定
 
 ```bash
 php artisan key:generate
 
 ```
 
-#### 6. マイグレーション、シーディングの実行
+#### 5. マイグレーション、シーディングの実行
 
 ```bash
 php artisan migrate
@@ -69,7 +52,7 @@ php artisan db:seed
 
 ```
 
-#### 7. シンボリックリンクの実行
+#### 6. シンボリックリンクの実行
 
 ```bash
 php artisan storage:link
@@ -82,11 +65,11 @@ src ディレクトリにある storage ディレクトリに権限を設定
 chmod -R 777 storage
 ```
 
-#### 8. テスト環境の構築・実行
+#### 7. テスト環境の構築・実行
 ##### 本プロジェクトには Laravel の Feature / Unit テストが用意されています。  
 
 - テスト用DBの作成<br>
-⇒mysqlコンテナに管理者としてログイン
+⇒mysqlコンテナに管理者としてログインしてテスト用DBの作成
 ```
 CREATE DATABASE laravel_test_db;
 ```
@@ -103,6 +86,9 @@ APP_KEY<br>
 DB_DATABASE<br>
 DB_USERNAME<br>
 DB_PASSWORD<br>
+
+- config/database.phpで接続設定
+
 - テスト用アプリケーションキーの作成
 ```bash
 php artisan key:generate --env=testing
@@ -165,6 +151,10 @@ STRIPE_SECRET=あなたのStripeシークレットキー
 本番用の決済には切り替えないでください（テストモードのままで使用してください）。<br>
 
 本番環境での利用を想定する場合は、Stripeアカウントを「本番モード」に切り替え、商業情報の登録等が必要になります。<br>
+
+本プログラムのメール認証にはMailHogを使用しています。<br>
+現在認証メールが登録後に自動送信されない現象が起きています。<br>
+届いていない場合は"認証メールを再送する"をクリックして再送してください。<br>
 
 ## 使用技術
 

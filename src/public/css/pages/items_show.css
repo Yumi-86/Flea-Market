@@ -10,7 +10,6 @@
     padding: 0 var(--spacing-md);
     gap: var(--spacing-card);
 }
-
 .item-dtl__image-wrapper {
     flex: 1;
     max-width: 500px;
@@ -232,19 +231,22 @@ img.item-dtl__image {
     border: none;
     width: 80%;
 }
-
 .comment__error {
     color: var(--color-danger);
     font-size: var(--font-xs);
     padding: var(--spacing-xs) var(--spacing-sm);
     display: inline-block;
     width: 80%;
-    background-color: #ffeaea;
+    text-align: center;
+    background-color: var(--color-danger-bg);
 }
 @media screen and (min-width: 768px) and (max-width: 850px) {
     .item-dtl__page {
         flex-direction: column;
         padding: var(--spacing-sm);
+    }
+    。comment__error {
+        width: 100%;
     }
 
     .item-dtl__image-wrapper {

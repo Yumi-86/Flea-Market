@@ -71,15 +71,16 @@
             </div>
             @endforeach
             <p class="comment__adding">商品へのコメント</p>
-            <form action="{{ route('comment.store', $product) }}" method="post" class="comment__adding-form" id="comment-form"> @csrf
+            <form action="{{ route('comment.store', $product) }}" method="post" class="comment__adding-form" id="comment-form">
+                @csrf
                 @auth
                 <textarea name="content" class="comment__adding-txt" rows="8"></textarea>
-                <div class="comment__adding-btn">
-                    <button class="comment__adding-btn--submit btn" type="submit">コメントを送信する</button>
-                </div>
                 @error('content')
                 <div class="comment__error"> {{ $message }} </div>
                 @enderror
+                <div class="comment__adding-btn">
+                    <button class="comment__adding-btn--submit btn" type="submit">コメントを送信する</button>
+                </div>
                 @endauth
                 @guest
                 <textarea name="content" class="comment__adding-txt" rows="8" disabled>コメント機能を利用するにはログインが必要です。</textarea>
