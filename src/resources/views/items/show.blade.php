@@ -29,12 +29,22 @@
             </form>
             <div class="item-dtl__comment">
                 <a href="#comment-form" class="item-dtl__comment-pic" title="コメント欄へ移動"></a>
-                <p class="commnents__nmb">{{ $comments->count() }}</p>
+                <p class="comment__nmb">{{ $comments->count() }}</p>
             </div>
         </div>
         <form action="{{ route('purchase.create', $product) }}" class="item-dtl__btn">
             @csrf
+            @if(!$product->selling_status)
+            @auth
             <button type="submit" class="btn item-dtl__btn item-dtl__btn--buy">購入手続きへ</button>
+            @endauth
+            @guest
+            <div class="btn item-dtl__btn item-dtl__btn--login">ログインして購入手続きへ</div>
+            @endguest
+            @endif
+            @if($product->selling_status)
+            <div class="btn item-dtl__btn item-dtl__btn--sold">売り切れ</div>
+            @endif
         </form>
         <h3 class="item-dtl__section-ttl">商品説明</h3>
         <p class="item-dtl__description">{{ $product->description }}</p>

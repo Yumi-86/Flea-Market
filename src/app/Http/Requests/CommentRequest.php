@@ -43,7 +43,7 @@ class CommentRequest extends FormRequest
                 ->back()
                 ->withErrors($validator)
                 ->withInput()
-                ->withFragment('comment-form') // ★ これを追加
+                ->withFragment('comment-form')
         );
     }
 }

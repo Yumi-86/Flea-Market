@@ -36,7 +36,6 @@ class CommentTest extends TestCase
     public function test_logged_in_user_can_submit_comments()
     {
         $this->actingAs($this->user);
-        
         $this->post(route('comment.store', $this->product), [
                 'content' => 'テストコメント'
             ])
@@ -49,7 +48,7 @@ class CommentTest extends TestCase
         ]);
 
         $this->get(route('items.show', $this->product))
-            ->assertSee(['<p class="commnents__nmb">1</p>'], false);
+            ->assertSee(['<p class="comment__nmb">1</p>'], false);
     }
 
     public function test_users_cannot_submit_comments_before_logging_in()
@@ -57,7 +56,7 @@ class CommentTest extends TestCase
         $this->get(route('items.show', $this->product))
             ->assertStatus(200)
             ->assertDontSeeText('コメントを送信する')
-            ->assertSee(['<p class="commnents__nmb">0</p>'], false);
+            ->assertSee(['<p class="comment__nmb">0</p>'], false);
     }
 
     public function test_validation_error_if_no_comment_is_entered()
@@ -69,7 +68,7 @@ class CommentTest extends TestCase
             ->assertSessionHasErrors(['content' => 'コメント内容を入力してください']);
 
         $this->get(route('items.show', $this->product))
-            ->assertSee(['<p class="commnents__nmb">0</p>'], false);
+            ->assertSee(['<p class="comment__nmb">0</p>'], false);
 
         $this->assertDatabaseCount('comments', 0);
     }
@@ -79,7 +78,6 @@ class CommentTest extends TestCase
         $longText = str_repeat('あ', 256);
 
         $this->actingAs($this->user);
-            
         $this->post(route('comment.store', $this->product), [
             'content' => $longText,
         ])
@@ -88,6 +86,6 @@ class CommentTest extends TestCase
         $this->assertDatabaseCount('comments', 0);
 
         $this->get(route('items.show', $this->product))
-            ->assertSee(['<p class="commnents__nmb">0</p>'], false);
+            ->assertSee(['<p class="comment__nmb">0</p>'], false);
     }
 }

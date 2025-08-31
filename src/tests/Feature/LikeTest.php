@@ -37,7 +37,7 @@ class LikeTest extends TestCase
         $this->actingAs($this->user);
 
         $this->get(route('items.show', $this->product))
-            ->assertSeeText('0');
+            ->assertSee(['<p class="liked__nmb">0</p>'], false);
 
         $this->assertDatabaseMissing('likes', [
             'user_id' => $this->user->id,
@@ -51,7 +51,8 @@ class LikeTest extends TestCase
             'product_id' => $this->product->id,
         ]);
 
-        $this->get(route('items.show', $this->product))->assertSeeText('1');
+        $this->get(route('items.show', $this->product))
+            ->assertSee(['<p class="liked__nmb">1</p>'], false);
     }
 
     public function test_icon_color_change_by_pressing_like_icon()
@@ -79,7 +80,7 @@ class LikeTest extends TestCase
 
         $response = $this->get(route('items.show', $this->product))
             ->assertStatus(200)
-            ->assertSeeText('1');
+            ->assertSee(['<p class="liked__nmb">1</p>'], false);
 
         $this->assertMatchesRegularExpression('/item-dtl__liked--destroy/', $response->getContent());
 
@@ -92,7 +93,7 @@ class LikeTest extends TestCase
 
         $response = $this->get(route('items.show', $this->product))
             ->assertStatus(200)
-            ->assertSeeText('0');
+            ->assertSee(['<p class="liked__nmb">0</p>'], false);
 
         $this->assertMatchesRegularExpression('/item-dtl__liked(?!-)/', $response->getContent());
     }

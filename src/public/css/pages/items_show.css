@@ -100,7 +100,7 @@ img.item-dtl__image {
 }
 
 .liked__nmb,
-.commnents__nmb {
+.comment__nmb {
     display: block;
     margin: 0 auto;
     text-align: center;
@@ -111,6 +111,16 @@ img.item-dtl__image {
 .item-dtl__btn--buy {
     background-color: var(--color-primary);
     color: var(--color-white);
+    font-weight: bold;
+    border: none;
+    margin: var(--spacing-sm) 0;
+    width: 80%;
+}
+.item-dtl__btn--sold,
+.item-dtl__btn--login {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
     font-weight: bold;
     border: none;
     margin: var(--spacing-sm) 0;
@@ -271,7 +281,8 @@ img.item-dtl__image {
         width: 100%;
     }
 
-    .item-dtl__btn--sold {
+    .item-dtl__btn--sold,
+    .item-dtl__btn--login {
         width: 100%;
     }
 
