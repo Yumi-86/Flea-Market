@@ -80,7 +80,7 @@ src ディレクトリにある storage ディレクトリに権限を設定
 chmod -R 777 storage
 ```
 
-#### 7. テスト環境の構築・実行
+#### 7. テスト環境の構築・実行 PHPUnit
 ##### 本プロジェクトには Laravel の Feature / Unit テストが用意されています。  
 
 - テスト用DBの作成<br>
@@ -115,7 +115,7 @@ php artisan migrate --env=testing
 ```bash
 php artisan test
 ```
-#### 7. テスト環境の構築・実行
+#### 8. テスト環境の構築・実行 Laravel Dusk
 ##### 本プロジェクトには Laravel の Laravel Dusk テストが用意されています。  
 
 - テスト用DBの作成<br>
