@@ -18,7 +18,7 @@ class ProfileFactory extends Factory
 
         return [
             'user_id' => User::factory(),
-            'profile_image' => $this->faker->imageUrl(200, 200, 'people', true),
+            'profile_image' => 'profile_sample/default.png',
             'postal_code' => substr_replace($postcode, '-', 3, 0),
             'address' => $this->faker->address(),
             'building' => $this->faker->optional()->secondaryAddress(),

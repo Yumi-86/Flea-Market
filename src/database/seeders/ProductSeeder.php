@@ -22,13 +22,17 @@ class ProductSeeder extends Seeder
             'name' => 'user1',
             'email' => 'user1@example.com',
             'password' => bcrypt('coachtech')
-        ])->has(Profile::factory())->create();
+        ])->has(Profile::factory([
+            'profile_image' => 'profile_sample/user1.png'
+        ]))->create();
 
         $user2 = User::factory([
             'name' => 'user2',
             'email' => 'user2@example.com',
             'password' => bcrypt('coachtech')
-        ])->has(Profile::factory())->create();
+        ])->has(Profile::factory([
+            'profile_image' => 'profile_sample/user2.png'
+        ]))->create();
 
 
         $products = [
@@ -126,7 +130,7 @@ class ProductSeeder extends Seeder
                     'product_images',
                     new File(database_path('seeders/images/Tumbler+souvenir.jpg'))
                 ),
-                'condition' => '状態が悪い',         
+                'condition' => '状態が悪い',
             ],
             [
                 'user_id' => $user2->id,
@@ -155,7 +159,7 @@ class ProductSeeder extends Seeder
         ];
         foreach ($products as $data) {
             $categories = $data['categories'];
-            unset($data['categories']);       
+            unset($data['categories']);
 
             $product = Product::factory()->create($data);
             $product->categories()->attach($categories);
