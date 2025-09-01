@@ -36,6 +36,21 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="test@example.com"
 MAIL_FROM_NAME="CoachtechFleamarket"
 ```
+*データベースの設定について以下を設定してください
+```
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+*決済機能Stripeの設定について以下を設定してください
+```
+STRIPE_KEY=あなたのStripeパブリッシュ可能キー
+STRIPE_SECRET=あなたのStripeシークレットキー
+```
 
 #### 4. アプリケーションキーの設定
 
@@ -73,21 +88,20 @@ chmod -R 777 storage
 ```
 CREATE DATABASE laravel_test_db;
 ```
-- config/database.phpの変更<br>
-・ 作成したデータベースに合わせた設定項目を記述
 - テスト用.envファイル作成
 ```bash
 cp .env .env.testing
 ```
 - .env.testingファイルの環境変数の変更<br>
 <設定項目><br>
-APP_ENV<br>
-APP_KEY<br>
-DB_DATABASE<br>
-DB_USERNAME<br>
-DB_PASSWORD<br>
-
-- config/database.phpで接続設定
+```
+APP_ENV=testing
+APP_KEY=
+DB_CONNECTION=mysql_test
+DB_DATABASE=laravel_test_db
+DB_USERNAME=root
+DB_PASSWORD=root
+```
 
 - テスト用アプリケーションキーの作成
 ```bash
@@ -97,18 +111,47 @@ php artisan key:generate --env=testing
 ```bash
 php artisan migrate --env=testing
 ```
-- phpunit.xmlの編集<br>
-・DB_CONNECTIONとDB_DATABASEを変更<br>
-
-```
-<server name="DB_CONNECTION" value="mysql_test"/>
-<server name="DB_DATABASE" value="laravel_test_db"/>
-```
-
 - テストの実行
 ```bash
 php artisan test
 ```
+#### 7. テスト環境の構築・実行
+##### 本プロジェクトには Laravel の Laravel Dusk テストが用意されています。  
+
+- テスト用DBの作成<br>
+⇒mysqlコンテナに管理者としてログインしてテスト用DBの作成
+```
+CREATE DATABASE laravel_dusk_db;
+```
+- テスト用.envファイル作成
+```bash
+cp .env .env.dusk.local
+```
+- .env.testingファイルの環境変数の変更<br>
+<設定項目><br>
+```
+APP_ENV=dusk
+APP_KEY=
+DB_CONNECTION=mysql_test
+DB_DATABASE=laravel_dusk_db
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+- テスト用アプリケーションキーの作成
+```bash
+php artisan key:generate --env=dusk.local
+```
+- マイグレーション実行
+```bash
+php artisan migrate --env=dusk.local
+```
+
+- テストの実行
+```bash
+php artisan dusk
+```
+
 #### 手動でテストを実行する際のログイン情報
 ##### 以下のメールアドレスとパスワードでダミー商品に出品車として紐づいたユーザにログインできます
 - ユーザ１<br>
@@ -131,12 +174,6 @@ password : coachtech<br>
 
 Stripeの開発用アカウントが必要です（https://dashboard.stripe.com/register
  にて無料で作成可能）。<br>
-
-.envファイルに以下の環境変数を設定してください：
-```
-STRIPE_KEY=あなたのStripeパブリッシュ可能キー
-STRIPE_SECRET=あなたのStripeシークレットキー
-```
 
 ・Stripeのテスト用クレジットカードを使用して決済を試すことができます：
 
