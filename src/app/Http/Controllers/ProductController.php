@@ -64,6 +64,10 @@ class ProductController extends Controller
             'condition' => $validated['condition'],
             'selling_status' => false,
         ]);
+        
+        if (isset($validated['categories'])) {
+            $product->categories()->attach($validated['categories']);
+        }
 
         return redirect()->route('mypage', ['tab' => 'sell'])
             ->with('status', '商品を出品しました！');
