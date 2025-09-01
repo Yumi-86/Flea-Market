@@ -42,8 +42,8 @@ DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=laravel_db
-DB_USERNAME=root
-DB_PASSWORD=root
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
 ```
 
 *決済機能Stripeの設定について以下を設定してください
