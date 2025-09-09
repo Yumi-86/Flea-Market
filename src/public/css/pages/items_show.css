@@ -69,14 +69,16 @@ img.item-dtl__image {
 
 .item-dtl__liked,
 .item-dtl__liked--destroy {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     background-size: contain;
     background-repeat: no-repeat;
     border: none;
     cursor: pointer;
     margin: 0 auto;
+    background-color: transparent;
 }
+
 .item-dtl__liked {
     background-image: url('/images/outline-star.png');
 }
@@ -92,8 +94,8 @@ img.item-dtl__image {
 
 .item-dtl__comment-pic {
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     background-image: url('/images/comment-icon.png');
     background-size: contain;
     background-repeat: no-repeat;

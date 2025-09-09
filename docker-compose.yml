@@ -22,7 +22,9 @@ services:
       - selenium
 
   selenium:
-    image: selenium/standalone-chrome:114.0
+    image: selenium/standalone-chrome:latest
+    volumes:
+      - /dev/shm:/dev/shm
     ports:
       - "4444:4444"
 
